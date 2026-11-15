@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ferret Heart Monitoring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* layout: one reading column; species sections stacked, each with owner text, a copy box for reports, and its own act-now list */
+  --ink:#1b2430; --muted:#5b6673; --navy:#1F4E79; --wash:#DCE6F1; --paper:#ffffff; --line:#c9d4e2;
+  --alert:#b3261e; --alert-wash:#fbeaea; --ok:#2e6b3f;
+  --display:"Source Serif 4", Georgia, serif; --body:"Source Sans 3", "Segoe UI", Calibri, Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --ink:#e4ebf3; --muted:#a3b0bf; --navy:#8fb8e3; --wash:#1d2c3d; --paper:#111821; --line:#2c3b4d; --alert:#ff8a80; --alert-wash:#3a1d1d; --ok:#8fd19e; color-scheme: dark; }
+}
+:root[data-theme="dark"]{ --ink:#e4ebf3; --muted:#a3b0bf; --navy:#8fb8e3; --wash:#1d2c3d; --paper:#111821; --line:#2c3b4d; --alert:#ff8a80; --alert-wash:#3a1d1d; --ok:#8fd19e; color-scheme: dark; }
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:17px/1.55 var(--body)}
+main{max-width:760px;margin:0 auto;padding:28px 18px 64px;display:grid;gap:28px}
+h1,h2,h3{font-family:var(--display);color:var(--navy);text-wrap:balance;margin:0}
+h1{font-size:2rem;line-height:1.2}
+h2{font-size:1.45rem;padding-top:6px;border-top:2px solid var(--navy)}
+h3{font-family:var(--body);font-size:1.02rem;font-weight:700;margin-top:4px}
+p{margin:0}
+.by{color:var(--muted);font-size:.95rem;margin-top:6px}
+.lede{font-size:1.08rem}
+nav{display:flex;flex-wrap:wrap;gap:8px}
+nav a{display:inline-block;padding:6px 14px;border:1px solid var(--navy);border-radius:999px;color:var(--navy);text-decoration:none;font-weight:600}
+nav a:hover,nav a:focus-visible{background:var(--wash);outline:none}
+section{display:grid;gap:12px}
+ul{margin:0;padding-left:1.2em;display:grid;gap:4px}
+.box{background:var(--wash);border-radius:8px;padding:14px 16px;display:grid;gap:8px}
+.act{background:var(--alert-wash);border-left:4px solid var(--alert);border-radius:6px;padding:12px 16px;display:grid;gap:6px}
+.act h3{color:var(--alert)}
+.note{color:var(--muted);font-size:.9rem}
+.counter{display:grid;gap:12px;border:1px solid var(--line);border-radius:10px;padding:16px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button{font:600 1rem var(--body);border-radius:8px;border:1px solid var(--navy);background:var(--navy);color:var(--paper);padding:10px 16px;cursor:pointer}
+button.ghost{background:transparent;color:var(--navy)}
+button:focus-visible{outline:3px solid var(--wash);outline-offset:2px}
+#tap{font-size:1.25rem;padding:18px 28px;min-width:180px}
+.big{font:700 2rem var(--display);color:var(--navy);font-variant-numeric:tabular-nums}
+.copy{border:1px dashed var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:8px;font-size:.95rem}
+.copy pre{white-space:pre-wrap;margin:0;font:inherit}
+.copied{color:var(--ok);font-weight:600;font-size:.9rem}
+footer{color:var(--muted);font-size:.85rem;display:grid;gap:6px;border-top:1px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>Monitoring Your Ferret's Breathing and Heart Health</h1>
+  <p class="by">Cardiology for Animals · David Pelio, DVM, DACVIM (Cardiology)</p>
+</header>
+
+<p class="lede">A rise in your pet's resting breathing rate can be an early sign of heart failure, often before anything else changes. Exotic pets hide illness well, so the breathing count, appetite, droppings and body weight are the best tools you have at home. </p>
+
+<nav aria-label="Sections"><a href="#how">How to count</a><a href="#count">Breath counter</a><a href="#ferret">What to watch for</a></nav>
+
+<section id="how">
+  <h2>How to count breaths</h2>
+  <ul>
+    <li>Wait until your pet is asleep or resting quietly. Do not count right after handling, eating, play or a car ride.</li>
+    <li>Watch the chest or body wall. One rise and one fall is one breath.</li>
+    <li>Count for 30 seconds and double it, or count for a full minute.</li>
+    <li>Write the number down with the date and time.</li>
+  </ul>
+  <div class="box">
+    <h3>Learn your pet's normal first</h3>
+    <p>For the first week, count once a day at about the same time and place. That week gives your pet's own baseline. For most exotic species no home breathing-rate cutoff has been published, so we compare your pet with itself. After the first week, count as often as your cardiologist recommends, and any time the breathing looks different.</p>
+  </div>
+  <div class="box">
+    <h3>If the number is high</h3>
+    <p>Recount a few times over the next hour or two while your pet is calm. If it stays above your pet's usual range, or above the number your cardiologist gave you, call your veterinarian the same day. If a high rate comes with any sign in the emergency list below, go to an emergency hospital that sees your species.</p>
+  </div>
+</section>
+
+<section id="count" class="counter" aria-labelledby="count-h">
+  <h2 id="count-h">Breath counter</h2>
+  <p>Press Start, then tap the big button once for every breath. The timer stops after 30 seconds and shows breaths per minute.</p>
+  <div class="row">
+    <button id="start" type="button">Start 30 seconds</button>
+    <button id="tap" type="button" class="ghost" disabled>Tap each breath</button>
+  </div>
+  <div class="row">
+    <span>Time left: <span id="left" class="big">30</span> s</span>
+    <span>Breaths: <span id="n" class="big">0</span></span>
+    <span>Rate: <span id="rate" class="big">—</span> /min</span>
+  </div>
+  <p class="note" id="log" aria-live="polite"></p>
+</section>
+
+
+<section id="ferret">
+  <h2>Ferret</h2>
+  <p>Heart disease in ferrets shows up as tiredness, less play, weak back legs, faster or harder breathing, coughing and a swollen belly (Schoemaker &amp; van Zeeland 2021). No home breathing-rate cutoff has been published for ferrets, so the first week of counts sets your ferret's normal.</p>
+  <h3>Every day</h3>
+  <ul>
+    <li>Resting or sleeping breathing rate and effort.</li>
+    <li>Energy and play, appetite, and how well the back legs work.</li>
+    <li>Weigh once a week.</li>
+  </ul>
+  <h3>Call your veterinarian the same day if</h3>
+  <ul>
+    <li>The resting rate stays above your ferret's usual range.</li>
+    <li>Coughing, sleeping more, or less interest in play.</li>
+    <li>The belly looks swollen, or weight changes.</li>
+  </ul>
+  <div class="act">
+    <h3>Go to an emergency hospital now if</h3>
+    <ul>
+      <li>Labored or open-mouth breathing.</li>
+      <li>Collapse or sudden weakness of the back legs. In ferrets this can also be low blood sugar from an insulinoma, which needs treatment right away (Schoemaker &amp; van Zeeland 2021).</li>
+      <li>Fainting, or not eating at all.</li>
+    </ul>
+  </div>
+  <div class="copy">
+    <strong>Report paragraph (copy for charts)</strong>
+    <pre id="t-ferret">Recommend the owner monitor [Patient]'s resting or sleeping respiratory rate and effort daily, read against the ferret's own baseline recorded over the first week (no ferret threshold has been published), with body weight weekly. If any signs are appreciated, such as a resting respiratory rate persistently above [Patient]'s baseline, labored breathing, coughing, lethargy, hind-limb weakness, collapse, abdominal distension or reduced appetite, the owner should take [Patient] to be evaluated by [Patient]'s exotic animal veterinarian or the closest emergency facility that sees ferrets for after-hours care; a blood glucose is measured in any weak or collapsing ferret (Schoemaker & van Zeeland 2021).</pre>
+    <div class="row"><button type="button" class="ghost" data-copy="t-ferret">Copy paragraph</button><span class="copied" aria-live="polite"></span></div>
+  </div>
+</section>
+
+
+
+<footer>
+  <p>No home breathing-rate cutoff has been published for ferrets, so reading the rate against your ferret's own first-week baseline is this practice's position; your cardiologist may set a different number for your ferret.</p>
+  <p>Sources: Schoemaker NJ, van Zeeland YRA. Noninfectious diseases of ferrets. MSD Veterinary Manual, professional version; 2021. · Counting method adapted from the Cardiac Education Group respiratory-rate handout, 2015.</p>
+  <p>© 2026 David Pelio, DVM, DACVIM (Cardiology) · Cardiology for Animals. All rights reserved.</p>
+</footer>
+</main>
+<script>
+(function(){
+  var start=document.getElementById('start'),tap=document.getElementById('tap'),
+      left=document.getElementById('left'),n=document.getElementById('n'),rate=document.getElementById('rate'),log=document.getElementById('log');
+  var count=0,timer=null,end=0;
+  function tick(){var s=Math.max(0,Math.ceil((end-Date.now())/1000));left.textContent=s;
+    if(s<=0){clearInterval(timer);timer=null;tap.disabled=true;start.disabled=false;
+      var r=count*2;rate.textContent=r;var d=new Date();
+      log.textContent='Recorded '+r+' breaths per minute at '+d.toLocaleString()+'. Write it in your log.';}}
+  start.addEventListener('click',function(){count=0;n.textContent='0';rate.textContent='—';log.textContent='';
+    end=Date.now()+30000;tap.disabled=false;start.disabled=true;tap.focus();tick();timer=setInterval(tick,200);});
+  tap.addEventListener('click',function(){if(!timer)return;count++;n.textContent=count;});
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){var t=document.getElementById(b.getAttribute('data-copy')).textContent;
+      var msg=b.parentNode.querySelector('.copied');
+      try{navigator.clipboard.writeText(t).then(function(){msg.textContent='Copied';},function(){msg.textContent='Select the text and copy it manually';});}
+      catch(e){msg.textContent='Select the text and copy it manually';}});});
+})();
+</script>
+</body>
+</html>
