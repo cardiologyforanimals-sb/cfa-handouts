@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cardiology for Animals Handouts</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* layout: one column; each handout is a row with its title, who it is for, an open link and a copy-link button */
+  --ink:#1b2430; --muted:#5b6673; --navy:#1F4E79; --wash:#DCE6F1; --paper:#ffffff; --line:#c9d4e2; --ok:#2e6b3f;
+  --display:"Source Serif 4", Georgia, serif; --body:"Source Sans 3", "Segoe UI", Calibri, Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root{ --ink:#e4ebf3; --muted:#a3b0bf; --navy:#8fb8e3; --wash:#1d2c3d; --paper:#111821; --line:#2c3b4d; --ok:#8fd19e; color-scheme: dark; } }
+*{box-sizing:border-box} html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:17px/1.55 var(--body)}
+main{max-width:760px;margin:0 auto;padding:32px 18px 64px;display:grid;gap:24px}
+h1{font:700 2rem/1.2 var(--display);color:var(--navy);margin:0;text-wrap:balance}
+.by{color:var(--muted);margin:4px 0 0}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+li{border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:6px}
+li h2{font:700 1.15rem var(--body);color:var(--navy);margin:0}
+li p{margin:0;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+a.open,button{font:600 .95rem var(--body);border-radius:8px;border:1px solid var(--navy);padding:8px 14px;cursor:pointer;text-decoration:none}
+a.open{background:var(--navy);color:var(--paper)} button{background:transparent;color:var(--navy)}
+a.open:focus-visible,button:focus-visible{outline:3px solid var(--wash);outline-offset:2px}
+.ok{color:var(--ok);font-weight:600;font-size:.9rem}
+footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Cardiology for Animals Handouts</h1>
+    <p class="by">David Pelio, DVM, DACVIM (Cardiology)</p>
+  </header>
+  <ul>
+    <li>
+      <h2>Monitoring Your Exotic Pet's Breathing and Heart Health</h2>
+      <p>Rabbit, ferret, bird and bearded dragon: how to count breaths, what to watch, when to call.</p>
+      <div class="row">
+        <a class="open" href="exotic-monitoring/">Open handout</a>
+        <button type="button" data-link="exotic-monitoring/">Copy link</button>
+        <span class="ok" aria-live="polite"></span>
+      </div>
+    </li>
+  </ul>
+  <footer>© 2026 David Pelio, DVM, DACVIM (Cardiology) · Cardiology for Animals. All rights reserved.</footer>
+</main>
+<script>
+document.querySelectorAll('[data-link]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var url=new URL(b.getAttribute('data-link'),location.href).href, msg=b.parentNode.querySelector('.ok');
+    try{navigator.clipboard.writeText(url).then(function(){msg.textContent='Link copied';},function(){msg.textContent=url;});}
+    catch(e){msg.textContent=url;}
+  });
+});
+</script>
+</body>
+</html>
