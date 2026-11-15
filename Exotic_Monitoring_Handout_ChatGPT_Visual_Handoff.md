@@ -1,22 +1,28 @@
-# Exotic Pet Heart Monitoring Handout — ChatGPT Visual Handoff
+# Exotic Pet Heart Monitoring Handouts (4 species) — ChatGPT Visual Handoff
 
 **Date:** 2026-11-14
 **Owner:** David Pelio, DVM, DACVIM (Cardiology) · Cardiology for Animals
-**Attach with this brief:** `exotic-monitoring/index.html`, the working page. Its folder on the Mac is `Downloads/Cardiology AI/40_Client_Education/Exotic_Monitoring_Handout/`.
-**Where it will live:** a free static site (GitHub Pages) at `…/cfa-handouts/exotic-monitoring/`. A small index page at `…/cfa-handouts/` links to it.
+**Attach with this brief:** the five working pages, from `Downloads/Cardiology AI/40_Client_Education/Exotic_Monitoring_Handout/` on the Mac:
+- `rabbit/index.html`
+- `ferret/index.html`
+- `bird/index.html`
+- `dragon/index.html`
+- `index.html` (the library page that links to all four)
+
+**Where they will live:** a free static site (GitHub Pages), with one link per species: `…/cfa-handouts/rabbit/`, `/ferret/`, `/bird/`, `/dragon/`.
 
 ---
 
 ## 1. The job
 
-This is an owner-facing web handout. Owners of rabbits, ferrets, pet birds and bearded dragons with heart disease use it at home to:
+These are **four separate owner-facing web handouts, one per species** (rabbit, ferret, bird, bearded dragon), plus a small library page. Each species page stands alone, because owners get only their own species' link. Owners use their page at home to:
 1. count resting breaths, using a built-in 30-second tap counter;
 2. know what to watch for in their species;
 3. know when to call the vet the same day and when to go to an emergency hospital.
 
-The cardiologist also uses it. Each species section has a **Report paragraph** with a **Copy** button, which he pastes into echo reports.
+The cardiologist also uses them. Each species page has a **Report paragraph** with a **Copy** button, which he pastes into echo reports.
 
-The page works and is accurate. It looks plain. **Make it beautiful without changing what it says or how it works.**
+The pages work and are accurate. They look plain. **Make all four beautiful, as one matching family, without changing what they say or how they work.**
 
 ---
 
@@ -24,11 +30,11 @@ The page works and is accurate. It looks plain. **Make it beautiful without chan
 
 - **All wording.** Every sentence, list item, report paragraph, citation and the footer are clinically reviewed. Do not rewrite, shorten, merge or "improve" any text. Do not add claims, numbers, tips or species facts.
 - **Every number.** Rabbit 30–60 breaths per minute, the 5% weekly weight change for birds, 30 seconds, and the 54 dragons. Do not add new ones.
-- **The four species and their order:** Rabbit, Ferret, Bird, Bearded dragon.
-- **The section anchors:** `#rabbit`, `#ferret`, `#bird`, `#dragon`, `#count`, `#how`. Report links point to them.
+- **One page per species, at its own folder path.** Do not merge the pages back into one.
+- **The section anchors on each page:** `#how`, `#count`, plus that page's species anchor (`#rabbit`, `#ferret`, `#bird` or `#dragon`).
 - **The working parts:**
   - Element IDs `start`, `tap`, `left`, `n`, `rate`, `log`.
-  - The four report-paragraph IDs: `t-rabbit`, `t-ferret`, `t-bird`, `t-dragon`.
+  - The report-paragraph ID on each page (`t-rabbit`, `t-ferret`, `t-bird` or `t-dragon`).
   - Every `data-copy` button, and the `.copied` message next to it.
   - The `<script>` at the bottom. Restyle freely, but keep these IDs and keep each element type (button stays a button, pre stays a pre).
 - **Byline and copyright:** "Cardiology for Animals · David Pelio, DVM, DACVIM (Cardiology)" and "© 2026 David Pelio, DVM, DACVIM (Cardiology) · Cardiology for Animals. All rights reserved."
@@ -38,7 +44,7 @@ The page works and is accurate. It looks plain. **Make it beautiful without chan
 
 ## 3. Technical constraints
 
-- **One self-contained `index.html`.** It is plain HTML, CSS and JavaScript, with no framework and no build step.
+- **Each page is one self-contained `index.html`.** Plain HTML, CSS and JavaScript, with no framework and no build step. Shared styling may be copied into each page or placed in one shared `assets/site.css` referenced by relative path (`../assets/site.css`).
 - **Fonts:** Google Fonts is fine. Any font that lets a stressed owner read a list fast at arm's length on a phone is fine.
 - **Images:**
   - Inline SVG, or a PNG/WebP placed in the same folder and referenced by relative path, such as `img/rabbit.webp`.
@@ -57,58 +63,75 @@ The page works and is accurate. It looks plain. **Make it beautiful without chan
 
 ---
 
-## 4. Visual direction
+## 4. Visual direction — synthwave with the Heartline comic style
 
-**Feel:** calm, warm, trustworthy, clinical-but-kind. This is read by a worried owner at night. It should feel like a well-designed specialty hospital handout, not an app store page and not a children's book.
+**The look is Cardiology for Animals synthwave:** a deep violet-to-midnight background, neon magenta and cyan accents, a soft sunset gradient horizon, and a faint perspective grid. It should feel like the practice's 80s neon teaching material, made friendly for owners.
 
-**Palette anchor:** the practice's document colors are navy `#1F4E79` and light blue `#DCE6F1`.
-- Build from these.
-- You may add one warm accent per species, used sparingly:
-  - Rabbit: soft sage.
-  - Ferret: warm sand.
-  - Bird: teal.
-  - Bearded dragon: terracotta.
-- **Emergency red is reserved** for the "Go to an emergency hospital now" boxes only. It must stand out from everything else on the page.
+**The characters come from Heartline.** Heartline is the practice's owner summary, and its patient portraits are made in ChatGPT in the chat **"Create Dog Image"** with the prompt **"Create golden hour character."** Every species character on these pages must be drawn in **that same comic portrait style**, so the handouts and Heartline look like one family.
 
-**Hierarchy each species section must make obvious, in this order:**
-1. Species name, with a small original illustration (see §5).
+**Readability rules over the neon:**
+- Body text sits on solid dark panels, never directly on the gradient or grid.
+- Text is off-white on violet at WCAG AA contrast or better.
+- Neon is for edges, headings, buttons and glow, not for paragraphs.
+- A worried owner at night must be able to read every list in one glance on a phone.
+
+**Color roles:**
+- Neon cyan: calm daily-check lists and the breath counter.
+- Neon amber or gold: the "Call your veterinarian the same day" boxes.
+- **Emergency red is reserved** for the "Go to an emergency hospital now" boxes only. Use a hot red-pink with a strong outline and glow, unmistakably the loudest element on the page. Red appears nowhere else.
+- Magenta: headings and accents.
+
+**Comic styling of the UI:**
+- Panels with bold ink outlines and slight drop shadows, like comic panels.
+- Section headings in a comic-display face, used sparingly.
+- Speech-bubble styling is welcome for the species character's one-line greeting at the top. The bubble may repeat only the page title, with no new claims.
+
+**Hierarchy each species page must make obvious, in this order:**
+1. Species character (hero, comic Heartline style) and the page title.
 2. The short intro paragraph.
-3. **Every day / Every week** list. Calm styling.
-4. **Call your veterinarian the same day if.** Amber/caution styling.
-5. **Go to an emergency hospital now if.** Red styling, the most visually urgent element on the page.
-6. **Report paragraph.** Clearly secondary, visibly "for the vet." Collapsed by default is acceptable, but the Copy button must still work.
+3. How to count, and the breath counter.
+4. **Every day / Every week** list. Cyan, calm.
+5. **Call your veterinarian the same day if.** Amber.
+6. **Go to an emergency hospital now if.** Red, loudest element on the page.
+7. **Report paragraph.** Clearly secondary, visibly "for the vet." Collapsed by default is acceptable, but the Copy button must still work.
 
-**Breath counter:** make it feel like a tool.
-- A large circular tap target.
-- A visible countdown ring or bar for the 30 seconds.
-- A clear big readout of breaths per minute.
+**Breath counter:** make it feel like an arcade tool.
+- A large circular neon tap button.
+- A glowing countdown ring for the 30 seconds.
+- A big readout of breaths per minute.
 - Keep the existing IDs.
 
-**Species navigation at the top:** four large, friendly buttons, each with its small illustration, plus "Breath counter."
+**Library page:** four big comic-panel cards, one per species character, each with Open and Copy link. Same synthwave world.
 
 ---
 
 ## 5. Illustrations
 
-Make one small original illustration per species, about 160 × 160, in one consistent style for all four:
-- Simple line-and-flat-color.
-- Friendly, not cartoonish.
-- Anatomically believable: a lop or upright-eared domestic rabbit, a domestic ferret, a medium parrot such as an African grey or Amazon, and a central bearded dragon.
+Make one hero character per species in the **Heartline "golden hour character" comic portrait style**, about 320 × 320 on a transparent background:
+- a domestic rabbit (lop or upright-eared);
+- a domestic ferret;
+- a medium parrot (African grey or Amazon);
+- a central bearded dragon.
+
+Also make a smaller version of each, about 120 × 120, for the library page cards.
 
 Rules:
+- Same style, line weight and lighting across all four, matching existing Heartline portraits.
+- Anatomically believable for the species.
+- Friendly and calm, never sick-looking or distressed.
 - No text in the art.
 - No existing mascot or brand character.
 - Not traced from a stock photo.
 
-Optional: a tiny chest-rising icon for the "How to count" section.
+Optional: a small neon chest-rising icon for the "How to count" section.
 
 ---
 
 ## 6. Deliverables
 
-1. `index.html`: the restyled page, with all of §2 intact.
-2. `img/` with the four species illustrations (and any icon), as WebP or PNG, each under 60 KB.
-3. One phone-width screenshot and one desktop screenshot of the finished page.
+1. `rabbit/index.html`, `ferret/index.html`, `bird/index.html`, `dragon/index.html` and the library `index.html`, restyled, with all of §2 intact.
+2. `assets/` with the shared stylesheet (if used) and the eight character images (four hero, four small), as WebP or PNG, each under 80 KB.
+3. One phone-width screenshot of each species page and of the library page.
 
 ---
 
@@ -119,10 +142,13 @@ Send it back if any of these are true:
 2. **The counter or a Copy button no longer works.** Test each before delivering.
 3. **An anchor or ID was renamed or removed.**
 4. **Emergency boxes are not the most urgent-looking element,** or red is used anywhere else.
-5. **It breaks at 360 px wide,** or anything scrolls sideways.
-6. **The illustrations contain text,** look like a known character, or are inconsistent in style across species.
-7. **Any note says AI made it.**
-8. **It needs a build tool, framework or external host** beyond Google Fonts and the page's own `img/` folder.
+5. **Text sits directly on the gradient or grid,** or any paragraph fails AA contrast.
+6. **The characters do not match the Heartline comic portrait style,** or the four do not match each other.
+7. **The pages were merged into one,** or a species page links to the other species' content.
+8. **Any page breaks at 360 px wide,** or anything scrolls sideways.
+9. **The illustrations contain text** or look like a known character.
+10. **Any note says AI made it.**
+11. **It needs a build tool, framework or external host** beyond Google Fonts and the pages' own `assets/` folder.
 
 ---
 
