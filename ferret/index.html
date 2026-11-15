@@ -83,11 +83,7 @@
       <li>Fainting, or not eating at all.</li>
     </ul>
   </div>
-  <div class="copy">
-    <strong>Report paragraph (copy for charts)</strong>
-    <pre id="t-ferret">Recommend the owner monitor [Patient]'s resting or sleeping respiratory rate and effort daily, read against the ferret's own baseline recorded over the first week (no ferret threshold has been published), with body weight weekly. If any signs are appreciated, such as a resting respiratory rate persistently above [Patient]'s baseline, labored breathing, coughing, lethargy, hind-limb weakness, collapse, abdominal distension or reduced appetite, the owner should take [Patient] to be evaluated by [Patient]'s exotic animal veterinarian or the closest emergency facility that sees ferrets for after-hours care; a blood glucose is measured in any weak or collapsing ferret (Schoemaker & van Zeeland 2021).</pre>
-    <div class="row"><button type="button" class="ghost" data-copy="t-ferret">Copy paragraph</button><span class="copied" aria-live="polite"></span></div>
-  </div>
+  
 </section>
 
 
@@ -110,11 +106,6 @@
   start.addEventListener('click',function(){count=0;n.textContent='0';rate.textContent='—';log.textContent='';
     end=Date.now()+30000;tap.disabled=false;start.disabled=true;tap.focus();tick();timer=setInterval(tick,200);});
   tap.addEventListener('click',function(){if(!timer)return;count++;n.textContent=count;});
-  document.querySelectorAll('[data-copy]').forEach(function(b){
-    b.addEventListener('click',function(){var t=document.getElementById(b.getAttribute('data-copy')).textContent;
-      var msg=b.parentNode.querySelector('.copied');
-      try{navigator.clipboard.writeText(t).then(function(){msg.textContent='Copied';},function(){msg.textContent='Select the text and copy it manually';});}
-      catch(e){msg.textContent='Select the text and copy it manually';}});});
 })();
 </script>
 </body>

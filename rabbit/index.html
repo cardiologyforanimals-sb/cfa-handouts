@@ -84,11 +84,7 @@
       <li>Collapse, or not eating at all.</li>
     </ul>
   </div>
-  <div class="copy">
-    <strong>Report paragraph (copy for charts)</strong>
-    <pre id="t-rabbit">Recommend the owner monitor [Patient]'s resting or sleeping respiratory rate and effort, appetite and fecal output daily, and body weight weekly, using the rabbit's own baseline recorded over the first week; normal resting respiratory rate in rabbits is approximately 30–60 breaths per minute (Orcutt & Malakoff 2020). If any signs are appreciated, such as a resting respiratory rate persistently above [Patient]'s baseline, open-mouth or labored breathing, reduced appetite or fecal output, weight loss, abdominal distension, lethargy, bulging eyes or collapse, the owner should take [Patient] to be evaluated by [Patient]'s exotic animal veterinarian or the closest emergency facility that sees rabbits for after-hours care.</pre>
-    <div class="row"><button type="button" class="ghost" data-copy="t-rabbit">Copy paragraph</button><span class="copied" aria-live="polite"></span></div>
-  </div>
+  
 </section>
 
 
@@ -112,11 +108,6 @@
   start.addEventListener('click',function(){count=0;n.textContent='0';rate.textContent='—';log.textContent='';
     end=Date.now()+30000;tap.disabled=false;start.disabled=true;tap.focus();tick();timer=setInterval(tick,200);});
   tap.addEventListener('click',function(){if(!timer)return;count++;n.textContent=count;});
-  document.querySelectorAll('[data-copy]').forEach(function(b){
-    b.addEventListener('click',function(){var t=document.getElementById(b.getAttribute('data-copy')).textContent;
-      var msg=b.parentNode.querySelector('.copied');
-      try{navigator.clipboard.writeText(t).then(function(){msg.textContent='Copied';},function(){msg.textContent='Select the text and copy it manually';});}
-      catch(e){msg.textContent='Select the text and copy it manually';}});});
 })();
 </script>
 </body>

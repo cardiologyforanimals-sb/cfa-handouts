@@ -85,11 +85,7 @@
       <li>Weakness, falling from the perch, or sitting on the cage floor.</li>
     </ul>
   </div>
-  <div class="copy">
-    <strong>Report paragraph (copy for charts)</strong>
-    <pre id="t-bird">Recommend the owner monitor [Patient]'s resting breathing while perched and calm, and weigh [Patient] on a gram scale at the same time of day at least weekly. If any signs are appreciated, such as tail bobbing at rest, open-mouth breathing, a swollen abdomen, weakness or falling from the perch, fluffed feathers with reduced appetite, or a weight change of more than 5% in a week, the owner should take [Patient] to be evaluated by [Patient]'s avian veterinarian or the closest emergency facility that sees birds for after-hours care.</pre>
-    <div class="row"><button type="button" class="ghost" data-copy="t-bird">Copy paragraph</button><span class="copied" aria-live="polite"></span></div>
-  </div>
+  
 </section>
 
 
@@ -111,11 +107,6 @@
   start.addEventListener('click',function(){count=0;n.textContent='0';rate.textContent='—';log.textContent='';
     end=Date.now()+30000;tap.disabled=false;start.disabled=true;tap.focus();tick();timer=setInterval(tick,200);});
   tap.addEventListener('click',function(){if(!timer)return;count++;n.textContent=count;});
-  document.querySelectorAll('[data-copy]').forEach(function(b){
-    b.addEventListener('click',function(){var t=document.getElementById(b.getAttribute('data-copy')).textContent;
-      var msg=b.parentNode.querySelector('.copied');
-      try{navigator.clipboard.writeText(t).then(function(){msg.textContent='Copied';},function(){msg.textContent='Select the text and copy it manually';});}
-      catch(e){msg.textContent='Select the text and copy it manually';}});});
 })();
 </script>
 </body>

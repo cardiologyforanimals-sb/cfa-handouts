@@ -87,11 +87,7 @@
       <li>Weakness or collapse.</li>
     </ul>
   </div>
-  <div class="copy">
-    <strong>Report paragraph (copy for charts)</strong>
-    <pre id="t-dragon">Recommend the owner weigh [Patient] on a gram scale weekly and record appetite, alertness, basking behavior and a resting respiratory rate counted at the same time of day and after the same basking period, because heart and respiratory rates vary with body temperature. If any signs are appreciated, such as dullness or altered behavior, reduced appetite, weight loss, regurgitation, persistent darkening of the beard, open-mouth or labored breathing, coelomic distension or weakness, the owner should take [Patient] to be evaluated by [Patient]'s reptile veterinarian or the closest emergency facility that sees reptiles for after-hours care (Ozawa et al 2024).</pre>
-    <div class="row"><button type="button" class="ghost" data-copy="t-dragon">Copy paragraph</button><span class="copied" aria-live="polite"></span></div>
-  </div>
+  
 </section>
 
 <footer>
@@ -112,11 +108,6 @@
   start.addEventListener('click',function(){count=0;n.textContent='0';rate.textContent='—';log.textContent='';
     end=Date.now()+30000;tap.disabled=false;start.disabled=true;tap.focus();tick();timer=setInterval(tick,200);});
   tap.addEventListener('click',function(){if(!timer)return;count++;n.textContent=count;});
-  document.querySelectorAll('[data-copy]').forEach(function(b){
-    b.addEventListener('click',function(){var t=document.getElementById(b.getAttribute('data-copy')).textContent;
-      var msg=b.parentNode.querySelector('.copied');
-      try{navigator.clipboard.writeText(t).then(function(){msg.textContent='Copied';},function(){msg.textContent='Select the text and copy it manually';});}
-      catch(e){msg.textContent='Select the text and copy it manually';}});});
 })();
 </script>
 </body>
